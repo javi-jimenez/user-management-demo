@@ -1,31 +1,21 @@
-package com.example.users;
+package com.example.userdemo.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
-@Entity
-public class User {
 
+@Entity
+
+public class User {
     @Id
     private String username;
     private String name;
     private String email;
     private String gender;
     private String pictureUrl;
-
-    // Constructors, Getters, and Setters
-
-    public User() {}
-
-    public User(String username, String name, String email, String gender, String pictureUrl) {
-        this.username = username;
-        this.name = name;
-        this.email = email;
-        this.gender = gender;
-        this.pictureUrl = pictureUrl;
-    }
-
-    // Getters and Setters
+    private String country;
+    private String state;
+    private String city;
 
     public String getUsername() {
         return username;
@@ -65,5 +55,29 @@ public class User {
 
     public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 }
