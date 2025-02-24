@@ -1,6 +1,6 @@
 package com.example.userdemo.service;
 
-import com.example.userdemo.model.User;
+import com.example.userdemo.model.UserData;
 import com.example.userdemo.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -20,24 +20,24 @@ public class UserService {
     }
 
 
-    public List<User> getAllUsers() {
+    public List<UserData> getAllUsers() {
         return userRepo.findAll();
     }
 
-    public User saveUser(User user) {
-        return userRepo.save(user);
+    public UserData saveUser(UserData userData) {
+        return userRepo.save(userData);
     }
 
     public boolean userExists(String username) {
         return userRepo.existsById(username);
     }
 
-    public Map<String, Map<String, Map<String, List<User>>>> getUsersTree() {
-        List<User> users = userRepo.findAll();
-        return users.stream().collect(
-                Collectors.groupingBy(User::getCountry,
-                        Collectors.groupingBy(User::getState,
-                                Collectors.groupingBy(User::getCity)
+    public Map<String, Map<String, Map<String, List<UserData>>>> getUsersTree() {
+        List<UserData> userData = userRepo.findAll();
+        return userData.stream().collect(
+                Collectors.groupingBy(UserData::getCountry,
+                        Collectors.groupingBy(UserData::getState,
+                                Collectors.groupingBy(UserData::getCity)
                         )
                 )
         );

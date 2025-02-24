@@ -1,7 +1,7 @@
 package com.example.userdemo.controller;
 
 import com.example.userdemo.model.PublicHolidayResponse;
-import com.example.userdemo.model.User;
+import com.example.userdemo.model.UserData;
 import com.example.userdemo.service.UserService;
 import com.example.userdemo.service.PublicHolidayClientService;
 import org.springframework.http.HttpStatus;
@@ -23,18 +23,18 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getAllUsers() {
+    public List<UserData> getAllUsers() {
         return userService.getAllUsers();
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public User createUser(@RequestBody User user) {
-        return userService.saveUser(user);
+    public UserData createUser(@RequestBody UserData userData) {
+        return userService.saveUser(userData);
     }
 
     @GetMapping("/tree")
-    public Map<String, Map<String, Map<String, List<User>>>> getUsersTree() {
+    public Map<String, Map<String, Map<String, List<UserData>>>> getUsersTree() {
         return userService.getUsersTree();
     }
 
